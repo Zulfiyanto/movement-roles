@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+     </head>
+
+     <script>
+          function system() {
+               var input = document.getElementById("myInput");
+               var button = document.getElementById("button");
+               var value = input.value;
+
+               let data = value.split(",");
+
+               let arr = [];
+
+               for (let i = 0; i < data.length; i++) {
+                    for (let j = 0; j < data.length; j++) {
+                         arr.push({ from: data[i], to: data[j] });
+                    }
+               }
+
+               // Mendapatkan referensi tabel
+               var table = document.getElementById("myTable");
+
+               // Menambahkan baris data ke tabel
+               for (var i = 0; i < arr.length; i++) {
+                    var row = table.insertRow();
+                    var cell1 = row.insertCell();
+                    var cell2 = row.insertCell();
+
+                    cell1.innerHTML = arr[i].from;
+                    cell2.innerHTML = arr[i].to;
+               }
+
+               input.style.display = "none";
+               button.style.display = "none";
+
+               // Mencegah pengiriman formulir
+               event.preventDefault();
+          }
+     </script>
+     <body>
+          <textarea name="my" id="myInput" cols="30" rows="10"></textarea>
+          <button id="button" onclick="system()">submit</button>
+
+          <table id="myTable">
+               <tbody></tbody>
+          </table>
+     </body>
+</html>
